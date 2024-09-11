@@ -1,0 +1,22 @@
+# Combina el resultado de dos o más consultas SELECT. No depende de una clave para unir filas como lo hace un JOIN. 
+# Solo apila los resultados uno debajo del otro, eliminando los duplicados.
+
+# Si se quisiera crear una lista de las series que pertenezcan al género Ciencia ficción, o Drama:
+
+SELECT * FROM series
+WHERE genero = 'Ciencia ficción'
+UNION
+SELECT * FROM series
+WHERE genero = 'Drama'
+
+
+# Las series en cuestión no tienen absoluta relación o característica común. Sin embargo, es posible juntarlas con UNION.
+
+# Escribe una consulta SQL que genere una lista unificada de títulos de episodios que cumplan al menos una de las siguientes condiciones: 
+# Tener una duración > 20 minutos o un rating en IMDb > 9
+
+SELECT titulo FROM Episodios
+WHERE rating_imdb > 9
+UNION
+SELECT titulo FROM Episodios
+WHERE duracion > 20
