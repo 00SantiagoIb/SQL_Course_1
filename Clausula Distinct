@@ -1,7 +1,0 @@
-# Permite seleccionar valores únicos de una columna. Por ejemplo, si se desea ver los géneros a los que corresponden las series almacenadas en la base de datos:
-
-SELECT genero FROM series;
-
-# Y se encuentran elementos repetitivos, y solo se quiere ver una vez cada elemento, 
-
-SELECT DISTINCT genero FROM series;
