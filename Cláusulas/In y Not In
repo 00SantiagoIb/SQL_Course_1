@@ -1,0 +1,13 @@
+# •	NOT IN:
+# Por ejemplo, se quiere visualizar la información de las series cuyo género NO sea comedia:
+
+SELECT * FROM series WHERE genero NOT IN ('Comedia')
+
+# O, se quiere visualizar la información de las series cuyo género NO sea drama o drama histórico:
+
+SELECT * FROM series WHERE genero NOT IN ('Drama', 'Drama histórico' )
+
+# •	IN:
+# Por ejemplo, se quiere visualizar la información de las series cuyo género SEA Drama:
+
+SELECT * FROM series WHERE genero IN ('Drama')
