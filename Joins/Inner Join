@@ -1,0 +1,14 @@
+# Devuelve solo las filas que tienen coincidencias en ambas tablas. Por ejemplo, si se tiene dos tablas, A y B, solo se mostrarán las filas donde los datos coinciden en ambas. 
+# Su principal uso, es para obtener datos que están presentes en ambas tablas.
+
+# Se quiere juntar la información de la tabla Series y Actuaciones con base al elemento común ‘serie_id’:
+
+SELECT * FROM series
+INNER JOIN actuaciones ON series.serie_id = actuaciones.serie_id
+
+# Escribe una consulta SQL que te permita obtener el título de la serie, el título de cada episodio y su duración de la serie 'Stranger Things'.
+# El resultado final debe contar con los siguientes nombres de columnas: titulo_serie, titulo_episodio, duracion.
+
+SELECT series.titulo AS titulo_serie, episodios.titulo AS titulo_episodio, episodios.duracion FROM Series
+INNER JOIN episodios ON series.serie_id = episodios.serie_id
+WHERE series.titulo = 'Stranger Things'
