@@ -1,0 +1,12 @@
+# Operadores lógicos: Permiten realizar comparaciones para tomar una acción:
+# •	AND.
+# Por ejemplo, se quiere visualizar el título de los episodios cuya duración sea mayor a 30 minutos y su rating en IMDB sea mayor a 8:
+
+SELECT titulo FROM episodios WHERE duracion > 30 AND rating_imdb  > 8
+
+# •	OR.
+# Por ejemplo, se quiere visualizar el título de las series cuyo año de lanzamiento sea, o 2015, o 2016:
+
+SELECT titulo FROM series WHERE (año_lanzamiento = 2015 OR  año_lanzamiento =  2016)
+
+# •	NOT: X condición no se cumple.
