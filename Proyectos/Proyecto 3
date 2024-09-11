@@ -1,0 +1,27 @@
+# Mediante subconsultas:
+
+# Identificar los 3 géneros más populares (en función de la cantidad de series correspondiente a cada género) y luego, mostrar las series más populares de estos géneros.
+
+SELECT
+series.titulo AS "Título de la serie",
+series.año_lanzamiento AS "Año de lanzamiento",
+series.genero AS "Género",
+AVG(episodios.rating_imdb) AS "Rating IMDB promedio"
+FROM
+series
+JOIN
+episodios ON series.serie_id = episodios.serie_id
+WHERE
+series.genero IN (
+SELECT genero
+FROM (
+SELECT genero, COUNT(*) AS Cantidad_De_Series
+FROM series
+GROUP BY genero
+ORDER BY Cantidad_De_Series DESC
+LIMIT 3
+) AS Top_3
+)
+GROUP BY
+series.serie_id
+ORDER BY "Rating IMDB promedio" DESC;
