@@ -1,0 +1,3 @@
+# Devuelve el año para una fecha específica. 
+
+SELECT fecha_estreno, YEAR(fecha_estreno) FROM episodios
