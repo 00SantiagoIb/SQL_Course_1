@@ -1,0 +1,8 @@
+# Parecido a SUBSTRING. 
+# Si es LEFT, toma X caracteres desde el inicio hacia la derecha, hasta el elemento X de la cadena. 
+# Si es RIGHT, toma X caracteres desde el final hacia la izquierda, hasta el elemento X de la cadena.
+
+SELECT titulo, 
+LEFT(titulo, 3) AS ‘Titulo LEFT’
+RIGHT(titulo, 3) AS ‘Titulo RIGHT’
+FROM series;	
