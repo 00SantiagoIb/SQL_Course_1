@@ -1,0 +1,11 @@
+# Apila los resultados uno debajo del otro, conservando los duplicados.
+
+# Si se quisiera crear una lista de las series que pertenezcan al género Ciencia ficción, y que hayan sido lanzadas posterior al 2010:  
+
+SELECT * FROM series
+WHERE genero = 'Ciencia ficción'
+UNION ALL
+SELECT * FROM series
+WHERE año_lanzamiento > 2010
+
+# Tras ejecutar la consulta, si hay series que compartan ambos criterios, saldrán duplicadas.  
