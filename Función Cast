@@ -1,0 +1,18 @@
+# Convierte un valor (de cualquier tipo) en un tipo de dato específico. 
+
+# Por ejemplo, para describir los tipos de datos almacenados en una tabla específica, por decir, la tabla episodios:
+
+DESCRIBE episodios
+
+# Si el consultor, desea filtrar por fecha, aquellas series estrenadas después del 01 de enero de 2010, más, sin embargo, no sabe cómo comparar un string con un date: 
+
+SELECT * FROM episodios
+WHERE CAST(fecha_estreno AS DATE) > '2010-01-01'
+ORDER BY fecha_estreno
+
+# Escribe una consulta SQL para seleccionar el título de las series y el año de lanzamiento. 
+# Sin embargo, en esta ocasión, debes convertir el año de lanzamiento de un número entero a texto (cadena de caracteres) usando la función CAST
+
+SELECT titulo, CAST(año_lanzamiento AS TEXT) AS 'Año de Lanzamiento'
+FROM SERIES
+
