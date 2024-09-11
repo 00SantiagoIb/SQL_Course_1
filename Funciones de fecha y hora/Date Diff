@@ -1,0 +1,10 @@
+# Entrega los días transcurridos entre dos fechas ingresadas. 
+
+# Por ejemplo, se quiere conocer cuántos días han pasado desde el estreno de cada capitulo de Juego de Tronos:
+
+SELECT *,
+DATEDIFF(CURDATE(), fecha_estreno) AS 'Días tras el estreno'
+FROM episodios
+WHERE serie_id = (SELECT serie_id FROM series WHERE titulo = 'Game of Thrones')
+
+# Importante: CURDATE() ingresa la fecha actual.
