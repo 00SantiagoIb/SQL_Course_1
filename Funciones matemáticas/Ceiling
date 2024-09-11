@@ -1,3 +1,9 @@
 # Redondear número hacia el entero superior más cercano.
 
 SELECT titulo, duracion, CEILING(duracion/60.0) AS ‘Duración en horas’ FROM episodios;
+
+# Escribe una consulta SQL que utilice la función CEILING para redondear hacia arriba los números de la columna rating_imdb en la tabla Episodios. 
+# Asigna un alias rating_redondeado al resultado. Ordena de forma descendente el resultado.
+
+SELECT CEILING(rating_imdb) AS rating_redondeado FROM episodios ORDER BY rating_redondeado DESC;
+
