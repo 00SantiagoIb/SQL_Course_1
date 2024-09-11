@@ -1,0 +1,9 @@
+# Es lo contrario del LEFT JOIN. Devuelve todas las filas de la tabla de la derecha (B) y las coincidencias en la izquierda (A). 
+# Si no hay coincidencia en A, las columnas de A tendrán NULL. Si B tiene filas que A no tiene, aparecerán esas filas de B con NULL en las columnas de A. No es muy utilizado.
+
+# Se quiere verificar que todas las series almacenadas, tengan asignado así sea un episodio
+
+SELECT series.titulo AS 'Titulo de la serie', episodios.titulo AS 'Titulo del episodio' FROM episodios
+RIGHT JOIN series
+ON episodios.serie_id = series.serie_id
+ORDER BY series.titulo
