@@ -1,0 +1,4 @@
+# Permite agrupar filas que tengan los mismos valores, dando como resultado, filas de resumen. 
+# Se quiere visualizar el ID de serie, y la cantidad de episodios que tienen las series con 10 o más episodios:
+
+SELECT serie_id, COUNT(episodio_id) AS 'Número de episodio' FROM episodios GROUP BY serie_id HAVING COUNT(episodio_id > 10)
