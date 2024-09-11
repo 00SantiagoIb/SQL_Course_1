@@ -1,0 +1,3 @@
+# Devuelve el producto cartesiano de las dos tablas. Es decir, combina cada fila de la tabla A con cada fila de la tabla B. 
+# Si A tiene 3 filas y B tiene 2 filas, el resultado será una tabla con 6 filas (3 * 2). 
+# Su uso es poco común, se utiliza cuando se quieren todas las combinaciones posibles entre las dos tablas.
