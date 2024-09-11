@@ -1,0 +1,15 @@
+# Permiten comparar valores para determinar una condición. Los más comunes y utilizados son:
+# •	Igualdad (=).
+# •	Desigualdad (<>).
+# •	Menor que (<).
+# •	Mayor que (>).
+# •	Menor o igual que (<=).
+# •	Mayor o igual que (>=).
+
+# Por ejemplo, se quiere visualizar todas las series cuyo año de lanzamiento sea posterior a 2015:
+
+SELECT * FROM series WHERE año_lanzamiento > 2015 
+
+# O, por ejemplo, se quiere visualizar todas las series cuyo año de lanzamiento previo a 2010:
+
+SELECT * FROM series WHERE año_lanzamiento < 2010
