@@ -1,0 +1,5 @@
+# Devuelve todas las filas cuando hay coincidencias en cualquiera de las tablas (A o B). 
+# Si no hay coincidencia, las columnas faltantes tendrán NULL. 
+# Para las tablas A y B, se mostrarán todas las filas de ellas, incluso si no coinciden entre ellas. 
+# Si A tiene datos que no están en B, aparecerán con NULL en las columnas de B, y viceversa. 
+# Su uso reside en obtener datos combinados de ambas tablas, incluyendo las no coincidentes.
