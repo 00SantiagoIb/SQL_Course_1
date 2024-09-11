@@ -1,1 +1,14 @@
+# Permite limitar la cantidad de registros consultados.
 
+# Por ejemplo, se desea los capítulos almacenados en la base de datos:
+
+SELECT * FROM episodios
+
+# Sin embargo, se quiere visualizar únicamente los 10 primeros registros.
+
+SELECT * FROM episodios LIMIT 10
+
+# Por otra parte, se desea ver el título y duración de los capítulos almacenados en la base de datos. 
+# Adicionalmente, se quiere imprimir los 10 primeros, ordenados por su duración de forma descendente (mayor a menor duración):
+
+SELECT titulo, duracion FROM episodios ORDER BY duracion DESC LIMIT 10
