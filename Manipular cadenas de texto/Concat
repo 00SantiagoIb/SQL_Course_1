@@ -1,0 +1,3 @@
+# Concatenar los elementos descritos.
+
+SELECT CONCAT(titulo, ‘(‘año_lanzamiento, ’)’) AS ‘Título y Año’ FROM series;
