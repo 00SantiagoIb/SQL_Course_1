@@ -1,0 +1,9 @@
+# Permite filtrar los resultados, con base a una condición. 
+
+# Por ejemplo, se quiere visualizar todas las series almacenadas en la base de datos, cuya característica común, sea que su género es ‘drama’.
+
+SELECT * FROM series WHERE genero = 'drama'
+
+# Por otra parte, se quiere visualizar todas las series cuyo año de lanzamiento sea posterior a 2012. El orden debe ser ascendente (de menor a mayor año):
+
+SELECT * FROM series WHERE año_lanzamiento > 2012 ORDER BY año_lanzamiento
