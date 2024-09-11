@@ -1,0 +1,3 @@
+# Redondear número hacia el entero superior más cercano.
+
+SELECT titulo, duracion, CEILING(duracion/60.0) AS ‘Duración en horas’ FROM episodios;
