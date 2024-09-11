@@ -1,0 +1,26 @@
+# Realice las consultas que respondan a las preguntas:
+
+# o	¿Qué géneros de series son más prevalentes en la tabla “Series”? Genere una lista de los diferentes géneros, y la cantidad de series correspondiente a cada uno.
+
+SELECT genero, COUNT(*) AS Cantidad_Series
+FROM series
+GROUP BY 1
+ORDER BY Cantidad_Series DESC;
+
+# o	¿Cuáles son las series con el Rating IMDB más alto, y cuántos episodios tienen?
+
+SELECT series.titulo, COUNT(episodios.episodio_id) AS Numero_Episodios, AVG (episodios.rating_imdb)	AS Promedio_IMDB
+FROM series
+INNER JOIN episodios ON series.serie_id = episodios.serie_id
+GROUP BY series.serie_id
+ORDER BY Promedio_IMDB DESC;
+
+
+
+# o	¿Cuál es la duración total de todos los episodios de la serie ‘Juego de Tronos’?
+
+
+SELECT series.titulo, SUM(episodios.duracion) AS Duracion_Total
+FROM series
+INNER JOIN episodios ON series.serie_id = episodios.serie_id
+WHERE series.titulo = 'Game of Thrones';
