@@ -1,0 +1,3 @@
+# Redondear número.
+
+SELECT titulo, duracion/60.0 AS ‘Duración en horas’, ROUND(duracion/60.0,0) AS ‘Duración redondeada en horas’ FROM episodios;
