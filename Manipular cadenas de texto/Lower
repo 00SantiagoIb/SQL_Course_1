@@ -1,0 +1,3 @@
+# Imprimir la cadena de texto en minúsculas.
+
+SELECT LOWER(titulo) AS ‘Título’ FROM series;
