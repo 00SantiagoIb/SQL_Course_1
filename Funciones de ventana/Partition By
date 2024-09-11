@@ -24,3 +24,14 @@ SELECT
 	fecha_estreno,
 ROW_NUMBER() OVER(PARTITION BY temporada ORDER BY fecha_estreno DESC) AS ranking_temporada
 FROM episodios
+
+# Escribe una consulta de SQL que genere un ranking de episodios para cada temporada de Stranger Things (serie_id = 2) basándose en las calificaciones de IMDb, 
+# de modo que puedas identificar los episodios mejor valorados dentro de cada temporada.
+
+SELECT
+	temporada,
+	titulo,
+	rating_imdb,
+ROW_NUMBER() OVER(PARTITION BY temporada ORDER BY rating_imdb DESC) AS `Ranking IMDb`
+FROM episodios
+WHERE serie_id = 2
