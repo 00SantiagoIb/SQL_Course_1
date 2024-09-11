@@ -1,0 +1,7 @@
+# Agrega un intervalo de hora/fecha a una fecha específica y retorna el resultado
+
+# Digamos, se quiere saber qué fecha resultante será al sumarle 30 días a la fecha de estreno de los episodios almacenados:
+
+SELECT fecha_estreno,
+DATE_ADD(fecha_estreno, INTERVAL 30 DAY)
+FROM episodios
