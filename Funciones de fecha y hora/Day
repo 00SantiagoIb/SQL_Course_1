@@ -1,0 +1,3 @@
+# Devuelve el día para una fecha específica.
+
+SELECT fecha_estreno, DAY(fecha_estreno) FROM episodios
