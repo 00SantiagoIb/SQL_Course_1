@@ -1,1 +1,11 @@
+# Por ejemplo, para visualizar el contenido de la tabla “Episodios” de netflixdb, la sintaxis es:
 
+SELECT * FROM episodios;
+
+# Si por el contrario, se quiere visualizar únicamente la columna “Titulo” de la tabla “Episodios” de netflixdb, la sintaxis es:
+
+SELECT titulo FROM episodios;
+ 
+# Finalmente, se quiere visualizar la columna “Episodio ID” y “Titulo” de la tabla “Episodios” de netflixdb, la sintaxis es:
+
+SELECT episodioID, titulo FROM episodios;
