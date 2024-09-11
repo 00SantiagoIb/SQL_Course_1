@@ -1,0 +1,16 @@
+# Consulta dentro de una consulta
+
+# Por ejemplo, si se quisiera obtener todos los episodios de la serie The Office:
+# Para conocer el ID de The Office, la consulta es:
+
+SELECT serie_id FROM series WHERE titulo = 'The Office'
+
+# Integrando la anterior consulta, a la consulta de los episodios de la serie:
+
+SELECT * FROM episodios
+WHERE serie_id = (SELECT serie_id FROM series WHERE titulo = 'The Office')
+
+# Escribe una consulta SQL que genere una lista de titulo de series cuyos episodios tienen un rating de IMDb superior a 8.
+
+SELECT titulo FROM Series
+WHERE serie_id IN (SELECT serie_id FROM Episodios WHERE rating_imdb > 8)
