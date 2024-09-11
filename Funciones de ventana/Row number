@@ -1,1 +1,35 @@
+# Asigna un número secuencial único a cada fila dentro de un conjunto de resultados. 
+# Es útil cuando quieres numerar las filas de una consulta y el número de la fila puede estar basado en el orden de un criterio específico.
 
+# Supongamos que dada una tabla ventas, se busca numerar cada venta basada en el monto de la venta, de mayor a menor:
+
+SELECT 
+    cliente_id, 
+    monto_venta, 
+    ROW_NUMBER() OVER (ORDER BY monto_venta DESC) AS numero_fila
+FROM ventas;
+
+
+# Si se quiere obtener el top 3 de series más recientes:
+
+WITH OrdenSeries AS(
+SELECT
+  titulo,
+  año_lanzamiento,
+  ROW_NUMBER() OVER (ORDER BY año_lanzamiento DESC) AS `Orden de lanzamiento`
+FROM series
+)
+
+SELECT * FROM OrdenSeries
+WHERE `Orden de lanzamiento` IN (1, 2, 3)
+
+
+# Escribe una consulta SQL que seleccione todas las series, incluyendo su titulo y año_lanzamiento y utiliza la función de ventana ROW_NUMBER() 
+# para asignar un número secuencial a cada serie basado en su año de lanzamiento (ORDER BY año_lanzamiento DESC), 
+# de la más reciente a la más antigua, esta última columna debe tener el nombre: clasificacion_global
+
+SELECT
+    titulo,
+    año_lanzamiento,
+    ROW_NUMBER() OVER (ORDER BY año_lanzamiento DESC) AS clasificacion_global
+FROM series
