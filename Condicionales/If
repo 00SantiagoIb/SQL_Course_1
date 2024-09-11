@@ -1,0 +1,13 @@
+# Tomar una decisión con base a una condición y su estado, ‘Verdadero’ o ‘Falso’. La sintaxis es:
+
+SELECT IF
+(X<Y, “Result if TRUE”, “Result if FALSE”);
+
+# Por ejemplo, se quiere clasificar los episodios de las series en ‘Rating alto’ y ‘Rating bajo’ según su Rating en IMDB. 
+# Siendo 8 el valor mínimo para una clasificación alta.
+
+SELECT titulo, rating_imdb,
+IF (rating_imdb >= 8, 'Rating Alto', 'Rating Bajo') AS 'Categoría según Rating'
+FROM episodios
+ORDER BY rating_imdb DESC
+
