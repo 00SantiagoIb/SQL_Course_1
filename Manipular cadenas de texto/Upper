@@ -1,0 +1,3 @@
+# Imprimir la cadena de texto en mayúsculas.
+
+SELECT UPPER(titulo) AS ‘Titulo’ FROM series;
