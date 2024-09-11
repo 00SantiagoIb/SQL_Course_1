@@ -1,0 +1,33 @@
+# Devuelve todas las filas de la tabla de la izquierda (A) y las coincidencias en la tabla de la derecha (B). 
+# Si no hay coincidencia en B, las columnas de B aparecerán con NULL. 
+# Si se tiene A tiene filas que B no tiene, esas filas de A aún aparecerán, pero con NULL en los valores de B. 
+# Su principal uso, es para obtener todos los datos de la tabla izquierda, incluso si no hay coincidencias en la derecha.
+
+# Se quiere visualizar el título de todos los episodios de una serie, y el título de la misma:
+
+SELECT series.titulo AS 'Título serie', episodios.titulo AS 'Título episodio'
+FROM series
+LEFT JOIN episodios
+ON series.serie_id = episodios.serie_id
+ORDER BY series.titulo
+
+# Escribe una consulta SQL que devuelva, para cada serie, su título, el título de cada episodio asociado (si hay alguno), y el rating de IMDb.
+# Los alias exactos que debes aplicar son: Título de la Serie, Título del Episodio, Rating IMDB
+# Ordena los resultados por el título de la serie de forma ascendente
+
+SELECT series.titulo AS 'Título de la Serie', episodios.titulo AS 'Título del Episodio', episodios.rating_imdb AS 'Rating IMDB'
+FROM series
+LEFT JOIN episodios
+ON series.serie_id = episodios.serie_id
+ORDER BY series.titulo
+
+# Escribe una consulta SQL que muestre el título de la serie, el título de cada episodio, y el rating de IMDb para todos los episodios de la serie 'Stranger Things'
+# Ordena los resultados por Episodios.rating_imdb de forma descendente (de mayor a menor) según rating de imdb
+# Los alias exactos que debes aplicar sobre las columnas son: Título de la Serie, Título del Episodio, Rating IMDB
+
+SELECT series.titulo AS 'Título de la Serie', episodios.titulo AS 'Título del Episodio', episodios.rating_imdb AS 'Rating IMDB'
+FROM series
+LEFT JOIN episodios
+ON series.serie_id = episodios.serie_id
+WHERE series.titulo = 'Stranger Things'
+ORDER BY episodios.rating_imdb DESC
