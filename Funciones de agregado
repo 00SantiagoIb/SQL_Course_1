@@ -1,0 +1,26 @@
+# Permiten realizar cálculos sobre grupos de valores y devuelven un único resultado:
+# Sum()
+# Count()
+# Avg()
+# Min()
+# Max()
+
+# Por ejemplo, se quiere saber la duración total del contenido almacenado en la base de datos:
+
+SELECT SUM(duracion) FROM episodios
+
+# O por ejemplo, se quiere saber la duración promedio de los episodios de la serie, Juego de Tronos, cuyo ID es 12:
+
+SELECT AVG(duracion) AS 'Duracion promedio' FROM episodios WHERE serie_id = 12
+
+# O por ejemplo, se quiere saber la cantidad de capítulos almacenados en la base, correspondientes a la serie The Breaking Bad, cuyo ID es 1:
+
+SELECT COUNT(*) AS 'Cantidad de capítulos' FROM episodios WHERE serie_id = 1
+
+# O por ejemplo, se quiere saber la duración del capítulo más largo, correspondiente a la serie The Breaking Bad, cuyo ID es 1:
+
+SELECT MAX(duracion) AS 'Capítulo más largo' FROM episodios WHERE serie_id = 1
+
+# O por ejemplo, se quiere saber la duración del capítulo más corto, correspondiente a la serie The Breaking Bad, cuyo ID es 1:
+
+SELECT MIN(duracion) AS 'Capítulo más largo' FROM episodios WHERE serie_id = 1
