@@ -1,0 +1,8 @@
+# Permite filtrar los resultados con base a un patrón específico en una columna.
+# Por ejemplo, se quiere visualizar la información de las series que en su título, contengan ‘The’:
+
+SELECT	 * FROM series WHERE titulo LIKE '%The%'
+
+# O por ejemplo, se quiere visualizar la información de las series que en su título, NO contengan ‘The’:
+
+SELECT * FROM series WHERE titulo NOT LIKE '%The%'
