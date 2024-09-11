@@ -1,0 +1,3 @@
+# Devuelve el mes para una fecha específica.
+
+SELECT fecha_estreno, MONTH(fecha_estreno) FROM episodios
