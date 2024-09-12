@@ -1,0 +1,28 @@
+Es una representación gráfica que se utiliza en el diseño de bases de datos para visualizar cómo interactúan entre sí dentro de un sistema. 
+Es una herramienta fundamental en la fase de modelado conceptual de bases de datos y ayuda a entender la estructura lógica de la información, 
+antes de implementarla físicamente en una base de datos relacional como MySQL.
+
+### Componentes clave de un DER:
+1. **Entidades**: 
+  Representan objetos o conceptos del mundo real sobre los que se quiere almacenar información en la base de datos. 
+  Ejemplos de entidades pueden ser "Clientes", "Productos", o "Pedidos". Se suelen representar con rectángulos.
+
+2. **Atributos**:
+  Son las propiedades o características de las entidades. Por ejemplo, un "Cliente" puede tener atributos como "Nombre", "Correo Electrónico" y "Teléfono". 
+  Se representan como óvalos conectados a las entidades.
+
+3. **Relaciones**: 
+  Describen cómo interactúan las entidades entre sí. Por ejemplo, la relación entre "Clientes" y "Pedidos" puede ser que un cliente puede hacer varios pedidos. 
+  Las relaciones se representan con rombos que conectan a las entidades relacionadas.
+
+4. **Cardinalidad**: 
+   Indica cuántas entidades de un tipo pueden estar relacionadas con entidades de otro tipo. Las cardinalidades comunes son:
+   - **1:1** (Uno a uno): Un registro de una entidad está relacionado con solo un registro de otra entidad.
+   - **1:N** (Uno a muchos): Un registro de una entidad está relacionado con muchos registros de otra entidad.
+   - **N:M** (Muchos a muchos): Muchos registros de una entidad están relacionados con muchos registros de otra entidad.
+
+### Ejemplo:
+Si queremos modelar una base de datos para una tienda en línea, podríamos tener:
+- Una entidad **Cliente** con atributos como "ID Cliente", "Nombre" y "Email".
+- Una entidad **Pedido** con atributos como "ID Pedido", "Fecha" y "Total".
+- Una relación entre **Cliente** y **Pedido**, indicando que un cliente puede realizar varios pedidos (relación 1:N).
