@@ -1,0 +1,34 @@
+# Para crear una Base de Datos: 
+
+CREATE TABLE IF NOT EXISTS Departamentos (
+	departamento_id INT AUTO_INCREMENT PRIMARY KEY,    # Declaración de la Primary key.
+  nombre VARCHAR(255) NOT NULL,
+  ubicacion VARCHAR(255)
+);
+
+CREATE TABLE IF NOT EXISTS Empleados (
+	empleado_id INT AUTO_INCREMENT PRIMARY KEY,    # Declaración de la Primary key.
+    nombre VARCHAR(255) NOT NULL,
+    apellido VARCHAR(255) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    departamento_id INT,
+    FOREIGN KEY(departamento_id) REFERENCES Departamentos(departamento_id)    # Declaración de la Foreign Key.
+    ON DELETE SET NULL
+);
+
+CREATE TABLE IF NOT EXISTS Proyectos (
+	proyecto_id INT AUTO_INCREMENT PRIMARY KEY,    # Declaración de la Primary key.
+    nombre VARCHAR(255) NOT NULL,
+    descripcion VARCHAR(255),
+    fecha_inicio DATE,
+    fecha_finalizacion DATE
+);
+
+CREATE TABLE IF NOT EXISTS AsignacionDeProyectos (
+	asignacion_id INT AUTO_INCREMENT PRIMARY KEY,    # Declaración de la Primary key.
+    proyecto_id INT,
+    empleado_id INT,
+    horas_asignadas INT NOT NULL,
+	FOREIGN KEY(proyecto_id) REFERENCES Proyectos(proyecto_id),    # Declaración de la Foreign Key.
+	FOREIGN KEY(empleado_id) REFERENCES Empleados(empleado_id)    # Declaración de la Foreign Key.
+);
