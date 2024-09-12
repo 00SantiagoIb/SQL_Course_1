@@ -1,7 +1,31 @@
+# Eliminar una tabla:
+
+DROP TABLE IF EXISTS asignaciondeproyectos;
+
 # Agregar columna a una tabla:
 
 ALTER TABLE Departamentos ADD COLUMN email_jefe VARCHAR(255);
 
-# Eliminar una tabla:
+# Eliminar una columna de una tabla:
 
-DROP TABLE IF EXISTS asignaciondeproyectos;
+ALTER TABLE Departamentos DROP COLUMN email_jefe;
+
+# Modificar el tipo de una columna:
+
+ALTER TABLE Libros MODIFY COLUMN Año_publicacion INT;
+
+# Truncar una tabla: Eliminar todos los registros de una tabla, pero sin eliminar la estructura de la tabla. 
+
+TRUNCATE TABLE Libros;
+
+# Renombrar una tabla:
+
+ALTER TABLE Libros RENAME TO Catalogo_Libros;
+
+# Agregar un comentario a una tabla:
+
+COMMENT ON TABLE Libros IS 'Tabla que almacena información de los libros de la biblioteca';
+
+# Agregar un comentario a una columna:
+
+COMMENT ON COLUMN Libros.Titulo IS 'Título del libro';
