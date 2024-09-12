@@ -32,3 +32,11 @@ CREATE TABLE IF NOT EXISTS AsignacionDeProyectos (
 	FOREIGN KEY(proyecto_id) REFERENCES Proyectos(proyecto_id),    # Declaración de la Foreign Key.
 	FOREIGN KEY(empleado_id) REFERENCES Empleados(empleado_id)    # Declaración de la Foreign Key.
 );
+
+# Para eliminar una Base de Datos: 
+
+DROP DATABASE EmpresaDB;
+
+# Para renombrar una Base de Datos: 
+
+RENAME DATABASE EmpresaDB TO OrganizacionDB;
