@@ -1,0 +1,7 @@
+# Agregar columna a una tabla:
+
+ALTER TABLE Departamentos ADD COLUMN email_jefe VARCHAR(255);
+
+# Eliminar una tabla:
+
+DROP TABLE IF EXISTS asignaciondeproyectos;
