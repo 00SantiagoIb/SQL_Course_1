@@ -2,3 +2,28 @@
 # El éxito de la serie se basa en la cantidad de episodios de los que dispone, y su rating IMDB promedio.
 # El resultado esperado es una tabla con la siguiente información: Titulo de la serie, Cantidad de capítulos, Rating IMDB promedio.
 
+WITH InformacionEpisodios AS(
+SELECT
+	serie_id AS Serie_ID,
+  COUNT(episodio_id) AS Cantidad_Capitulos
+FROM episodios
+GROUP BY serie_id
+),
+
+Rating AS(
+SELECT
+	serie_id AS Serie_ID,
+  AVG(rating_imdb) AS Rating_IMDB_Promedio
+FROM episodios
+GROUP BY serie_id
+)
+
+SELECT 
+  series.titulo AS Titulo_Serie,
+  InformacionEpisodios.Cantidad_Capitulos,
+  Rating.Rating_IMDB_Promedio
+  FROM series
+JOIN InformacionEpisodios ON series.Serie_ID = InformacionEpisodios.Serie_ID
+JOIN Rating ON series.Serie_ID = Rating.Serie_ID
+ORDER BY Rating.Rating_IMDB_Promedio DESC, InformacionEpisodios.Cantidad_Capitulos DESC
+
