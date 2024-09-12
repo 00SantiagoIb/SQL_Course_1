@@ -1,0 +1,74 @@
+Proceso de organizar los datos de manera eficiente para reducir la redundancia y mejorar la integridad de los datos. 
+Esto se logra dividiendo una tabla grande en varias tablas más pequeñas y definiendo relaciones entre ellas. 
+El objetivo principal es eliminar datos duplicados y garantizar que las dependencias entre los datos estén correctamente estructuradas.
+
+Beneficios de la normalización:
+- Evita la duplicación de datos: Al dividir los datos en tablas más pequeñas y relacionadas, se evita tener la misma información en múltiples lugares.
+- Mejora la integridad de los datos: Los datos se actualizan en un solo lugar, lo que reduce la posibilidad de inconsistencias.
+- Facilita el mantenimiento: Al tener una estructura bien organizada, es más fácil mantener y modificar la base de datos.
+
+Formas normales
+El proceso de normalización se lleva a cabo en diferentes etapas conocidas como Formas Normales. 
+Cada forma normal tiene un conjunto de reglas que deben cumplirse para pasar al siguiente nivel.
+
+#### Primera Forma Normal (1NF):
+- Los valores de cada columna deben ser atómicos, es decir, indivisibles (no se permiten listas o conjuntos de valores en una celda).
+- Cada columna debe contener un solo tipo de datos.
+- Todas las entradas en una columna deben ser del mismo tipo de datos.
+
+Ejemplo:
+Antes de la 1NF:
+| Cliente | Teléfonos       |
+|---------|-----------------|
+| Juan    | 555-1234, 555-5678 |
+
+Después de la 1NF:
+| Cliente | Teléfono  |
+|---------|-----------|
+| Juan    | 555-1234  |
+| Juan    | 555-5678  |
+
+
+#### Segunda Forma Normal (2NF):
+- Cumple con la 1NF.
+- Todos los atributos no clave deben depender completamente de la clave primaria (no debe haber dependencias parciales).
+
+Ejemplo:
+Supongamos que tenemos una tabla que almacena pedidos:
+| ID Pedido | Cliente | Ciudad Cliente | Producto  |
+|-----------|---------|----------------|-----------|
+| 1         | Juan    | Madrid         | Televisor |
+
+Esta tabla no está en 2NF porque "Ciudad Cliente" depende solo de "Cliente", no de "ID Pedido". Para cumplir con la 2NF, se debe separar en dos tablas:
+
+Clientes:
+| Cliente | Ciudad Cliente |
+|---------|----------------|
+| Juan    | Madrid         |
+
+Pedidos:
+| ID Pedido | Cliente | Producto  |
+|-----------|---------|-----------|
+| 1         | Juan    | Televisor |
+
+
+#### Tercera Forma Normal (3NF):
+- Cumple con la 2NF.
+- No debe haber dependencias transitivas, es decir, los atributos no clave deben depender **únicamente** de la clave primaria.
+
+Ejemplo:
+Siguiendo el ejemplo anterior, si en la tabla de Clientes se incluyera la "Provincia", y esta depende de la "Ciudad", la tabla no estaría en 3NF. Debemos separar la tabla en dos:
+
+Ciudades:
+| Ciudad  | Provincia |
+|---------|-----------|
+| Madrid  | Madrid    |
+
+Clientes:
+| Cliente | Ciudad |
+|---------|--------|
+| Juan    | Madrid |
+
+### Otras formas normales
+Existen formas más avanzadas, como la **Boyce-Codd Normal Form (BCNF)** y la **Cuarta (4NF)** y **Quinta Forma Normal (5NF)**, 
+pero las primeras tres son las más comunes en la práctica.
