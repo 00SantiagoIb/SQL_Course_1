@@ -1,0 +1,9 @@
+# Patrones utilizados para encontrar una determinada combinación de caracteres dentro de una cadena de texto.
+
+# Si se quisiera encontrar todas las series, que en su título tengan la combinación "The":
+
+SELECT
+	titulo,
+    descripcion
+FROM series
+WHERE titulo REGEXP '(?i)The'
