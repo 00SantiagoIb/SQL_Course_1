@@ -1,0 +1,73 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:130.0) Gecko/20100101 Firefox/130.0" version="24.7.12">
+  <diagram name="Página-1" id="nn6ZZ-j19aPFz4k5pel3">
+    <mxGraphModel dx="834" dy="416" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="K8BeHrh8CqxEAQGswzeH-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;strokeColor=#736CA8;fontColor=#1A1A1A;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;" edge="1" parent="1" source="K8BeHrh8CqxEAQGswzeH-1" target="K8BeHrh8CqxEAQGswzeH-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="K8BeHrh8CqxEAQGswzeH-1" value="Libros" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#5D7F99;strokeColor=#D0CEE2;fontColor=#1A1A1A;" vertex="1" parent="1">
+          <mxGeometry x="380" y="40" width="160" height="150" as="geometry">
+            <mxRectangle x="40" y="40" width="80" height="50" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="K8BeHrh8CqxEAQGswzeH-2" value="&lt;i&gt;ID_Libro&lt;/i&gt;&lt;br&gt;&lt;div&gt;&lt;i&gt;ID_Autor&lt;/i&gt;&lt;/div&gt;&lt;div&gt;Título&lt;/div&gt;&lt;div&gt;Género&lt;/div&gt;&lt;div&gt;Año_publicacion&lt;br&gt;&lt;/div&gt;&lt;div&gt;Editorial&lt;br&gt;&lt;/div&gt;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;labelBackgroundColor=none;fontColor=#1A1A1A;" vertex="1" parent="K8BeHrh8CqxEAQGswzeH-1">
+          <mxGeometry y="50" width="160" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="K8BeHrh8CqxEAQGswzeH-3" value="Autores" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#5D7F99;strokeColor=#D0CEE2;fontColor=#1A1A1A;" vertex="1" parent="1">
+          <mxGeometry x="40" y="55" width="160" height="120" as="geometry">
+            <mxRectangle x="40" y="40" width="80" height="50" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="K8BeHrh8CqxEAQGswzeH-4" value="&lt;i&gt;ID_Autor&lt;/i&gt;&lt;br&gt;&lt;div&gt;Nombre&lt;/div&gt;&lt;div&gt;Apellido&lt;/div&gt;&lt;div&gt;Nacionalidad&lt;br&gt;&lt;/div&gt;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;labelBackgroundColor=none;fontColor=#1A1A1A;" vertex="1" parent="K8BeHrh8CqxEAQGswzeH-3">
+          <mxGeometry y="50" width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="K8BeHrh8CqxEAQGswzeH-5" value="Préstamos" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#5D7F99;strokeColor=#D0CEE2;fontColor=#1A1A1A;" vertex="1" parent="1">
+          <mxGeometry x="380" y="300" width="160" height="150" as="geometry">
+            <mxRectangle x="40" y="40" width="80" height="50" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="K8BeHrh8CqxEAQGswzeH-6" value="&lt;i&gt;ID_Prestamo&lt;/i&gt;&lt;br&gt;&lt;div&gt;&lt;i&gt;ID_Libro&lt;/i&gt;&lt;/div&gt;&lt;div&gt;&lt;i&gt;ID_Lector&lt;/i&gt;&lt;/div&gt;&lt;div&gt;Fecha_prestamo&lt;br&gt;&lt;/div&gt;&lt;div&gt;Fecha_devolucion&lt;br&gt;&lt;/div&gt;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;labelBackgroundColor=none;fontColor=#1A1A1A;" vertex="1" parent="K8BeHrh8CqxEAQGswzeH-5">
+          <mxGeometry y="50" width="160" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="K8BeHrh8CqxEAQGswzeH-7" value="Lectores" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#5D7F99;strokeColor=#D0CEE2;fontColor=#1A1A1A;" vertex="1" parent="1">
+          <mxGeometry x="40" y="300" width="160" height="150" as="geometry">
+            <mxRectangle x="40" y="40" width="80" height="50" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="K8BeHrh8CqxEAQGswzeH-8" value="&lt;i&gt;ID_Lector&lt;/i&gt;&lt;br&gt;&lt;div&gt;Nombre&lt;/div&gt;&lt;div&gt;Apellido&lt;/div&gt;&lt;div&gt;DNI&lt;/div&gt;&lt;div&gt;Celular&lt;/div&gt;&lt;div&gt;Email&lt;br&gt;&lt;/div&gt;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;labelBackgroundColor=none;fontColor=#1A1A1A;" vertex="1" parent="K8BeHrh8CqxEAQGswzeH-7">
+          <mxGeometry y="50" width="160" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="K8BeHrh8CqxEAQGswzeH-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=ERmany;endFill=0;labelBackgroundColor=none;strokeColor=#736CA8;fontColor=default;startArrow=ERone;startFill=0;" edge="1" parent="1" source="K8BeHrh8CqxEAQGswzeH-4" target="K8BeHrh8CqxEAQGswzeH-2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="340" y="140" />
+              <mxPoint x="340" y="140" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="K8BeHrh8CqxEAQGswzeH-14" value="&lt;div&gt;Un autor puede escribir&amp;nbsp;&lt;/div&gt;&lt;div&gt;múltiples libros&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=#D0CEE2;fontColor=#1A1A1A;fillColor=#5D7F99;" vertex="1" connectable="0" parent="K8BeHrh8CqxEAQGswzeH-10">
+          <mxGeometry x="-0.0126" y="-1" relative="1" as="geometry">
+            <mxPoint y="-26" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="K8BeHrh8CqxEAQGswzeH-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#736CA8;fontColor=#1A1A1A;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;" edge="1" parent="1" source="K8BeHrh8CqxEAQGswzeH-8" target="K8BeHrh8CqxEAQGswzeH-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="K8BeHrh8CqxEAQGswzeH-15" value="&lt;div&gt;Cada libro está relacionado&lt;/div&gt;&lt;div&gt;&amp;nbsp;a un único autor&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=#D0CEE2;fontColor=#1A1A1A;fillColor=#5D7F99;" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="279.9979310344828" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="K8BeHrh8CqxEAQGswzeH-17" value="&lt;div&gt;Un libro puede ser prestado&lt;/div&gt;&lt;div&gt;múltiples veces&lt;br&gt;&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=#D0CEE2;fontColor=#1A1A1A;fillColor=#5D7F99;" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="539.9979310344828" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="K8BeHrh8CqxEAQGswzeH-18" value="&lt;div&gt;Un lector puede tener activos&lt;/div&gt;&lt;div&gt;varios préstamos a su&lt;/div&gt;&lt;div&gt;nombre&lt;br&gt;&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=#D0CEE2;fontColor=#1A1A1A;fillColor=#5D7F99;" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="289.9979310344828" y="375" as="geometry" />
+        </mxCell>
+        <mxCell id="K8BeHrh8CqxEAQGswzeH-19" value="&lt;div&gt;Cada préstamo está relacionado&lt;/div&gt;&lt;div&gt;&amp;nbsp;a un único lector&lt;br&gt;&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];strokeColor=#D0CEE2;fontColor=#1A1A1A;fillColor=#5D7F99;" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="289.9979310344828" y="430" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
