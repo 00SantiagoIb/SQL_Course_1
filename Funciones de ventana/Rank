@@ -1,0 +1,23 @@
+# Asigna un rango a cada fila dentro de una partición.
+# En caso de empates, asigna el mismo rango a todas las filas empatadas y "salta" los números. 
+# Por ejemplo, si las primeras tres filas tienen el mismo valor, todas recibirán el rango 1, y la siguiente fila iniciará en el rango 4.
+# Es sumamente útil para clasificar datos y determinar posiciones relativas.
+
+# Por ejemplo, si dos estudiantes comparten la máxima calificación en un examen, es injusto que en un ranking, uno de ellos quede primero y el otro segundo,
+# el sistema de calificación, les asignará a ambos el puesto #1, sin embargo, el siguiente estudiante, con un puntaje menor a los anteriores, obtendrá el puesto #3:
+
+SELECT
+  nombre,
+  puntaje,
+  RANK() OVER (ORDER BY puntaje DESC) AS ranking
+FROM
+  estudiantes;
+
+# Escribe una consulta SQL que asigne un rango a cada episodio, donde episodios con la misma calificación compartan el mismo rango.
+# Ordena los episodios desde el más alto hasta el  más bajo, según su calificación, asegurándote de gestionar correctamente los empates. 
+
+SELECT
+	titulo,
+    rating_imdb,
+RANK() OVER(ORDER BY rating_imdb DESC) AS `Ranking por IMDB`
+FROM episodios
