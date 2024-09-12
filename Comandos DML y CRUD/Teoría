@@ -1,0 +1,51 @@
+#  DML (Lenguaje de Manipulación de Datos) es una categoría dentro de SQL que se usa para manipular y gestionar datos en las tablas. 
+# Los comandos DML incluyen: .
+
+    INSERT: Inserta nuevos datos en la base de datos.
+    SELECT: Consulta datos de la base de datos.
+    UPDATE: Actualiza datos existentes en la base de datos.
+    DELETE: Elimina datos de la base de datos.
+    
+#  CRUD, por otro lado, es un concepto que representa las cuatro operaciones básicas que puedes realizar sobre los datos: 
+#  Create, Read, Update y Delete. Estas operaciones CRUD se implementan utilizando los comandos DML en SQL.
+
+Relación entre DML y CRUD:
+
+    Create (Crear): Se implementa usando el comando INSERT de DML.
+    Read (Leer): Se implementa usando el comando SELECT de DML.
+    Update (Actualizar): Se implementa usando el comando UPDATE de DML.
+    Delete (Eliminar): Se implementa usando el comando DELETE de DML.
+
+
+# CREATE. Insertar contenido en una tabla:
+
+INSERT INTO Departamentos (nombre, ubicacion) VALUES
+('Recursos Humanos', 'Edificio B'),
+('Marketing', 'Edificio Central');
+
+# READ. Leer contenido en una tabla:
+
+SELECT * FROM Departamentos;
+
+# UPDATE. Actualizar el contenido de un registro:
+
+UPDATE Departamentos SET ubicacion = 'Edificio RH' WHERE nombre = 'Recursos Humanos';
+UPDATE Departamentos SET ubicacion = 'Edificio M' WHERE nombre = 'Marketing';
+
+# DELETE. Borrar el contenido de un registro:
+
+DELETE FROM departamentos WHERE nombre = 'Marketing';
+
+
+| Acción    | Descripción                       | Comando SQL |
+|---------  |-----------------------------------|-------------|
+| **Create  | Insertar nuevos datos en la tabla | `INSERT`    |
+| **Read    | Consultar datos de la tabla       | `SELECT`    |
+| **Update  | Actualizar datos existentes       | `UPDATE`    |
+| **Delete  | Eliminar datos existentes         | `DELETE`    |
+
+
+#  Consideraciones importantes:
+WHERE en `UPDATE` y `DELETE`: Siempre debes usar una condición para especificar qué registro(s) actualizar o eliminar, de lo contrario, 
+podrías afectar todos los registros de la tabla.
+
