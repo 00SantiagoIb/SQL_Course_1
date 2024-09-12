@@ -1,0 +1,22 @@
+# Es muy similar a RANK, sin embargo, DENSE_RANK no salta números en caso de empates, asignando el siguiente número disponible.
+# Es decir, si dos estudiantes obtuvieron la calificación más alta del examen, ambos serán el #1, y el estudiante con la siguiente mejor calificación, será el #2.
+
+# Si se quiere rankear los episodios según su Rating IMDB, asignando la misma posición a empates:
+
+SELECT
+	titulo,
+    rating_imdb,
+DENSE_RANK() OVER(ORDER BY rating_imdb DESC) AS `Ranking por IMDB`
+FROM episodios
+
+# Escribe una consulta SQL utilizando la función DENSE_RANK() para clasificar los episodios por su duración utilizando la tabla Episodios.
+
+# Deberás asegurarte de que los episodios con la misma duración reciban el mismo rango, y los rangos sigan una secuencia continua, 
+# sin huecos entre ellos, independientemente de los empates.
+# El objetivo es identificar cuáles son los episodios más largos de la base de datos y cómo se comparan entre sí en términos de duración.
+
+SELECT
+	titulo,
+    duracion,
+DENSE_RANK() OVER(ORDER BY duracion DESC) AS ranking_por_duracion
+FROM episodios
