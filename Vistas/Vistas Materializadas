@@ -1,0 +1,30 @@
+#  Son similares a las vistas tradicionales, pero con una diferencia clave: Almacenan físicamente los datos en la base de datos,
+   en lugar de recalcularlos cada vez que se accede a la vista.
+
+#  Características principales:
+
+1. Almacenamiento de datos: Los datos de una vista materializada se guardan físicamente en disco en el momento de su creación o actualización.
+   
+2. Mejora del rendimiento: Como los resultados de la consulta ya están precomputados y almacenados, acceder a la vista materializada es mucho más rápido, 
+                           especialmente en consultas complejas o de grandes volúmenes de datos.
+
+3. Actualización: Las vistas materializadas no reflejan automáticamente los cambios de las tablas subyacentes. Se deben actualizar manualmente o 
+                  mediante un proceso programado (dependiendo del motor de base de datos) para mantener los datos al día.
+
+#  Uso de vistas materializadas:
+Si bien MySQL no soporta nativamente vistas materializadas, se pueden simular usando tablas junto con triggers o tareas programadas para actualizar los datos.
+
+Ejemplo en un sistema que las soporta (como Oracle o PostgreSQL):
+
+CREATE MATERIALIZED VIEW VentasPorMes AS
+SELECT mes, SUM(total) AS TotalVentas
+FROM Ventas
+GROUP BY mes;
+
+En este caso, la consulta se ejecuta una vez y los resultados se guardan en disco. Si las ventas cambian, la vista no se actualizará automáticamente, 
+y necesitarás un comando como:
+
+REFRESH MATERIALIZED VIEW VentasPorMes;
+
+
+En resumen, las vistas materializadas mejoran el rendimiento pero requieren un esfuerzo adicional para mantenerlas actualizadas.
