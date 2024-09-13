@@ -1,0 +1,21 @@
+#  Trigger para reportar la fecha exacta del registro de un nuevo empleado:
+
+DELIMITER //
+
+CREATE TRIGGER RegistrarNuevoEmpleado
+-- El trigger se ejecuta posterior al registro de un nuevo empleado
+AFTER INSERT ON Empleados
+FOR EACH ROW
+BEGIN
+	-- Insertar en la tabla "LogEmpleados", el ID del nuevo empleado, y la fecha del momento en que se haga.
+    -- NOW() es una función que retorna la fecha y hora exacta. El formato es "YYYY-MM-DD HH-MM-SS"
+	INSERT INTO LogEmpleados (empleado_id, fecha_registro) VALUES (NEW.empleado_id, NOW());
+END //
+
+DELIMITER ;
+
+-- Prueba de inserción
+INSERT INTO Empleados (nombre, apellido, email) VALUES ('Nicolás', 'Ibarra', 'nicolas.ibarra@email.com');
+SELECT * FROM Empleados;
+
+SELECT * FROM Logempleados;
