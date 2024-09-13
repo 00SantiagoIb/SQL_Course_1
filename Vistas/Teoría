@@ -1,0 +1,25 @@
+#  Consultas guardadas que actúan como "tablas virtuales". No almacenan datos por sí mismas, sino que muestran los datos resultantes de una consulta cuando se acceden. 
+#  Son útiles para:
+
+1. Simplificar consultas complejas**: Almacenan una consulta compleja con un nombre simple.
+2. Seguridad: Puedes restringir el acceso a ciertas columnas o filas de una tabla mediante una vista.
+3. Abstracción: Ocultan la complejidad del esquema de base de datos a los usuarios finales.
+
+#  Por ejemplo:
+
+CREATE VIEW VistaLibrosAutores AS
+SELECT Libros.Titulo, Autores.Nombre, Autores.Apellido
+FROM Libros
+JOIN Autores ON Libros.ID_Autor = Autores.ID_Autor;
+
+#  Esta vista muestra el título del libro junto al nombre y apellido del autor sin exponer todos los datos de ambas tablas.
+
+#  O por ejemplo: Para consultar todos los empleados del departamento de Tecnología:
+
+CREATE VIEW VistaEmpleadosTecnologia AS
+	SELECT nombre, apellido, email
+    FROM empleados
+    WHERE depto_id = 1;
+
+SELECT * FROM VistaEmpleadosTecnologia;
+
