@@ -1,0 +1,58 @@
+#  Son bloques de código SQL que se ejecutan automáticamente en respuesta a ciertos eventos en una tabla, 
+#  como operaciones CRUD de registros. Los triggers se configuran para dispararse antes o después de estos eventos.
+
+#  Tipos de eventos de un trigger:
+- *BEFORE*: El trigger se ejecuta ante* de que ocurra el evento (insert, update, delete).
+- *AFTER*: El trigger se ejecuta después de que ocurra el evento.
+
+#  Utilidad de los triggers:
+1. Validación de datos: Se puede usar un trigger para verificar o modificar los datos antes de que se inserten o actualicen.
+2. Auditoría: Capturan automáticamente cambios en los datos y los registran en otra tabla (por ejemplo, un historial de cambios).
+3. Automatización: Realizan cálculos o actualizaciones automáticas en otras tablas basadas en un cambio en una tabla.
+
+------------------------------------------------------------------
+
+#  Ejemplo de Trigger:
+
+#  1. Trigger BEFORE INSERT:
+Este trigger verifica antes de insertar un registro que no se supere un límite de horas asignadas a un proyecto.
+
+CREATE TRIGGER VerificarHorasAntesDeInsertar
+BEFORE INSERT ON AsignacionesDeProyectos
+FOR EACH ROW
+BEGIN
+    DECLARE horasTotales INT;
+    
+    -- Sumar las horas actuales del proyecto
+    SELECT SUM(horas_asignadas) INTO horasTotales
+    FROM AsignacionesDeProyectos
+    WHERE proyecto_id = NEW.proyecto_id;
+    
+    -- Si las horas totales exceden 100, lanzamos un error
+    IF IFNULL(horasTotales, 0) + NEW.horas_asignadas > 100 THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'No se pueden asignar más de 100 horas a este proyecto';
+    END IF;
+END;
+
+En este caso, antes de insertar nuevas asignaciones de horas, se verifica si el total no supera las 100 horas. Si se supera, se bloquea la inserción con un error.
+
+------------------------------------------------------------------
+
+#  2. Trigger AFTER UPDATE:
+Este trigger actualiza automáticamente una tabla de auditoría después de actualizar los datos de una tabla.
+
+CREATE TRIGGER RegistrarActualizacionEmpleado
+AFTER UPDATE ON Empleados
+FOR EACH ROW
+BEGIN
+    INSERT INTO HistorialEmpleados (empleado_id, nombre_anterior, nombre_nuevo, fecha_cambio)
+    VALUES (OLD.id, OLD.nombre, NEW.nombre, NOW());
+END;
+
+En este ejemplo, cada vez que se actualiza el nombre de un empleado en la tabla `Empleados`, el trigger inserta un registro en la tabla `HistorialEmpleados` con el nombre anterior y el nuevo.
+
+------------------------------------------------------------------
+
+#  Claves de los triggers:
+- OLD: Hace referencia a los datos anteriores al evento (útil en `UPDATE` y `DELETE`).
+- NEW: Hace referencia a los nuevos datos que se están insertando o actualizando.
