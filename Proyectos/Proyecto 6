@@ -1,0 +1,4 @@
+# Crear la vista "VistaEmpleadosProyectos" para la base de datos EmpresaDB.
+# Esta vista debe ser una consulta que muestre el nombre y apellido del empleado, junto con el proyecto al que está asignado.
+# Se debe basar en las tablas Empleados, AsignacionesDeProyectos y Proyectos.
+
