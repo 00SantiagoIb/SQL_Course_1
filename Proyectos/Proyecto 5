@@ -1,0 +1,18 @@
+#  Crear un procedimiento almacenado, cuyos parámetros de entrada sean: Nombre y Ubicación del departamento.
+
+DELIMITER //	
+
+CREATE PROCEDURE AgregarDepartamento (
+    IN nombreDep VARCHAR(255), 
+    IN ubicacionDep VARCHAR(255)
+)
+BEGIN
+	INSERT INTO Departamentos (nombre, ubicacion) 
+    VALUES (nombreDep, ubicacionDep);
+END //
+
+DELIMITER ;
+
+CALL AgregarDepartamento('Desarrollo de Software', 'Edificio SW');
+
+SELECT * FROM departamentos;
