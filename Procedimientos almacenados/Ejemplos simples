@@ -1,1 +1,58 @@
+### Ejemplo de procedimiento almacenado en MySQL
 
+Supongamos que tenemos una tabla `Usuarios` y queremos crear un procedimiento que inserte un nuevo usuario. 
+El procedimiento recibirá como parámetros el nombre y el correo electrónico del usuario.
+
+CREATE PROCEDURE InsertarUsuario(IN nombre VARCHAR(100), IN email VARCHAR(100))
+BEGIN
+    INSERT INTO Usuarios (Nombre, Email)
+    VALUES (nombre, email);
+END;
+
+Aquí se está creando un procedimiento llamado `InsertarUsuario`, que toma dos parámetros de entrada (`nombre` y `email`). Cuando se ejecuta, 
+inserta un nuevo registro en la tabla `Usuarios`.
+
+### Ejemplo con parámetros de salida
+
+Veamos un ejemplo donde el procedimiento retorna un valor usando un parámetro `OUT`. Supongamos que queremos obtener la cantidad de usuarios en la tabla `Usuarios`.
+
+CREATE PROCEDURE ContarUsuarios(OUT total INT)
+BEGIN
+    SELECT COUNT(*) INTO total FROM Usuarios;
+END;
+```
+Este procedimiento `ContarUsuarios` usa un parámetro de salida (`total`) para devolver la cantidad de usuarios en la tabla.
+
+Para ejecutarlo y obtener el valor devuelto:
+
+CALL ContarUsuarios(@cantidad);
+SELECT @cantidad AS TotalUsuarios;
+```
+
+Aquí, el valor de la variable `@cantidad` contendrá el total de usuarios.
+
+---
+### Ejemplo más avanzado: Procedimiento con control de flujo
+
+Además de ejecutar consultas simples, los procedimientos almacenados pueden incluir estructuras de control de flujo, 
+como condiciones (`IF`), ciclos (`WHILE`, `LOOP`), y manejo de excepciones.
+
+CREATE PROCEDURE ActualizarEmailUsuario(IN id INT, IN nuevo_email VARCHAR(100))
+BEGIN
+    DECLARE usuario_existe INT;
+    
+    -- Verificar si el usuario existe
+    SELECT COUNT(*) INTO usuario_existe FROM Usuarios WHERE ID_Usuario = id;
+    
+    -- Si el usuario existe, actualizamos su email
+    IF usuario_existe > 0 THEN
+        UPDATE Usuarios
+        SET Email = nuevo_email
+        WHERE ID_Usuario = id;
+    ELSE
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Usuario no encontrado';
+    END IF;
+END;
+```
+Este procedimiento `ActualizarEmailUsuario` verifica si un usuario con un determinado `ID` existe. Si es así, actualiza su correo electrónico, 
+y si no, lanza un error personalizado.
