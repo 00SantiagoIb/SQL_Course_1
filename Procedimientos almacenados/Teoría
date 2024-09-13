@@ -1,0 +1,129 @@
+#  Conjuntos de instrucciones SQL que se guardan en el servidor de bases de datos para ser reutilizados. 
+#  Funcionan como programas o subrutinas que puedes ejecutar directamente desde la base de datos, lo que permite realizar operaciones complejas de manera eficiente, 
+#  reduciendo la necesidad de escribir las mismas consultas repetidamente.
+
+### Características principales de los procedimientos almacenados:
+
+1. Encapsulamiento de lógica: Permiten agrupar y reutilizar una serie de sentencias SQL, encapsulando la lógica de negocio en la base de datos.
+   
+2. Reutilización: Pueden ejecutarse múltiples veces con diferentes parámetros, evitando duplicar código y simplificando la administración.
+
+3. Mejora en el rendimiento: Al ser almacenados en el servidor de bases de datos, 
+   los procedimientos almacenados suelen ejecutarse más rápidamente que las consultas ad hoc, ya que su plan de ejecución es optimizado y almacenado por el servidor.
+
+4. Seguridad: Permiten controlar qué usuarios pueden ejecutar determinadas operaciones en la base de datos, sin necesidad de otorgar acceso directo a las tablas subyacentes. Además, ayudan a prevenir ataques de **inyección SQL**, al ser más difícil manipular su lógica.
+
+---
+
+### ¿Cómo crear un procedimiento almacenado en MySQL?
+
+La sintaxis básica para crear un procedimiento almacenado en MySQL es la siguiente:
+
+CREATE PROCEDURE nombre_procedimiento ([lista_de_parametros])
+BEGIN
+    -- Instrucciones SQL aquí
+END;
+
+- **`nombre_procedimiento`**: El nombre que le das al procedimiento.
+- **`lista_de_parametros`**: Son los parámetros de entrada y salida que el procedimiento puede recibir o retornar.
+- **`BEGIN...END`**: Delimita el bloque de código SQL dentro del procedimiento.
+
+### Tipos de parámetros:
+1. IN: Parámetro de entrada. Se pasa un valor al procedimiento cuando se llama.
+2. OUT: Parámetro de salida. El procedimiento puede modificar este valor y devolverlo.
+3. INOUT: Es tanto de entrada como de salida. Se pasa un valor al procedimiento y este puede modificarlo.
+
+---
+
+### Ejemplo de procedimiento almacenado en MySQL
+
+Supongamos que tenemos una tabla `Usuarios` y queremos crear un procedimiento que inserte un nuevo usuario. 
+El procedimiento recibirá como parámetros el nombre y el correo electrónico del usuario.
+
+CREATE PROCEDURE InsertarUsuario(IN nombre VARCHAR(100), IN email VARCHAR(100))
+BEGIN
+    INSERT INTO Usuarios (Nombre, Email)
+    VALUES (nombre, email);
+END;
+
+Aquí se está creando un procedimiento llamado `InsertarUsuario`, que toma dos parámetros de entrada (`nombre` y `email`). C
+uando se ejecuta, inserta un nuevo registro en la tabla `Usuarios`.
+
+### Llamar a un procedimiento almacenado
+
+Para ejecutar el procedimiento `InsertarUsuario`, usas el comando `CALL`:
+
+CALL InsertarUsuario('Ana García', 'ana.garcia@example.com');
+```
+Esto agregará un nuevo usuario con el nombre "Ana García" y el correo "ana.garcia@example.com".
+
+### Ejemplo con parámetros de salida
+
+Veamos un ejemplo donde el procedimiento retorna un valor usando un parámetro `OUT`. Supongamos que queremos obtener la cantidad de usuarios en la tabla `Usuarios`.
+
+CREATE PROCEDURE ContarUsuarios(OUT total INT)
+BEGIN
+    SELECT COUNT(*) INTO total FROM Usuarios;
+END;
+```
+Este procedimiento `ContarUsuarios` usa un parámetro de salida (`total`) para devolver la cantidad de usuarios en la tabla.
+
+Para ejecutarlo y obtener el valor devuelto:
+
+CALL ContarUsuarios(@cantidad);
+SELECT @cantidad AS TotalUsuarios;
+```
+
+Aquí, el valor de la variable `@cantidad` contendrá el total de usuarios.
+
+---
+
+### Beneficios de los procedimientos almacenados:
+
+1. Rendimiento: Como el procedimiento está precompilado y almacenado en el servidor, se ejecuta más rápido que consultas dinámicas que se envían desde la aplicación.
+   
+2. Modularidad: Permiten organizar la lógica de la base de datos en unidades manejables y reutilizables.
+
+3. Reducción del tráfico entre cliente-servidor: En lugar de enviar múltiples consultas individuales, 
+                                                 puedes llamar a un procedimiento almacenado que ejecute todo en el servidor.
+
+4. Mantenimiento: Si la lógica cambia, solo necesitas modificar el procedimiento almacenado y no las aplicaciones cliente.
+
+5. Seguridad: Facilitan la implementación de reglas de seguridad, permitiendo que los usuarios ejecuten procedimientos almacenados 
+              sin tener acceso directo a las tablas subyacentes.
+
+---
+
+### Limitaciones o inconvenientes:
+- Dependencia de la base de datos**: Los procedimientos almacenados son específicos del sistema de bases de datos que utilices (MySQL, PostgreSQL, SQL Server, etc.). Esto puede generar problemas de portabilidad si cambias de sistema.
+- Complejidad: Para aplicaciones pequeñas o sencillas, los procedimientos almacenados pueden ser innecesarios y añadir complejidad.
+- Difícil de depurar: A veces, depurar procedimientos almacenados es más complicado que depurar código de aplicación tradicional.
+
+---
+
+### Ejemplo más avanzado: Procedimiento con control de flujo
+
+Además de ejecutar consultas simples, los procedimientos almacenados pueden incluir estructuras de control de flujo, como condiciones (`IF`), ciclos (`WHILE`, `LOOP`), y manejo de excepciones.
+
+```sql
+CREATE PROCEDURE ActualizarEmailUsuario(IN id INT, IN nuevo_email VARCHAR(100))
+BEGIN
+    DECLARE usuario_existe INT;
+    
+    -- Verificar si el usuario existe
+    SELECT COUNT(*) INTO usuario_existe FROM Usuarios WHERE ID_Usuario = id;
+    
+    -- Si el usuario existe, actualizamos su email
+    IF usuario_existe > 0 THEN
+        UPDATE Usuarios
+        SET Email = nuevo_email
+        WHERE ID_Usuario = id;
+    ELSE
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Usuario no encontrado';
+    END IF;
+END;
+```
+
+Este procedimiento `ActualizarEmailUsuario` verifica si un usuario con un determinado `ID` existe. Si es así, actualiza su correo electrónico, y si no, lanza un error personalizado.
+
+---
