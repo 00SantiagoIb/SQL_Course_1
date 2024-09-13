@@ -1,0 +1,17 @@
+#  Para optimizar le proceso de agregación de empleados a la Base de Datos EmpresaDB:
+
+DELIMITER //
+CREATE PROCEDURE AgregarEmpleado(
+	IN _nombre VARCHAR(255), IN _apellido VARCHAR(255),  IN _email VARCHAR(255),  IN _depto_id INT
+)
+BEGIN
+	INSERT INTO empleados (nombre, apellido, email, depto_id) VALUES (_nombre, _apellido, _email, _depto_id);
+END //
+
+DELIMITER ;
+
+#  Para llamar el procedimiento e incluir un nuevo trabajador:
+
+CALL AgregarEmpleado('Santiago', 'Ibarra', 'santiago.ibarra@email.com', '2');
+
+SELECT * FROM empleados;
