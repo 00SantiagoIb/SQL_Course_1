@@ -1,0 +1,59 @@
+# Sintaxis general:
+
+BEGIN;
+SAVEPOINT PreValidacion;
+INSERT INTO AsignacionesDeProyectos (proyecto_id, empleado_id, horas_asignadas) VALUES (5, 1 , 10);
+INSERT INTO AsignacionesDeProyectos (proyecto_id, empleado_id, horas_asignadas) VALUES (5, 2 , 20);
+-- Más inserciones hipotéticas
+-- Código de validación el total de horas por empleado
+-- Si el total excede el límite legal, revierta la operación cargando el SavePoint
+ROLLBACK TO PreValidacion;
+
+# Ejemplo: Combinación de procedimientos almacenados y transacciones:
+
+DELIMITER //	
+
+CREATE PROCEDURE AsignarHorasProyectos (
+    IN proyectoId INT, 
+    IN empleadoId INT, 
+    IN horasAsignadas INT
+)
+BEGIN
+    -- Horas totales iniciales, y máximo de horas permitido para un proyecto.
+    DECLARE horasTotales INT DEFAULT 0;
+    DECLARE horasMaximas INT DEFAULT 100;
+    
+    -- Inicio de la transacción
+    START TRANSACTION;
+    
+    -- Punto de guardado
+    SAVEPOINT PreValidacion;
+    
+    -- Cálculo de total de horas asignadas al proyecto
+    SELECT SUM(horas_asignadas) INTO horasTotales
+    FROM asignacionesdeproyectos
+    WHERE proyecto_id = proyectoId;
+    
+    -- Condicional en caso que horasTotales sea NULL, dado que los registros de horas_asignadas estén vacíos:
+    SET horasTotales = IFNULL(horasTotales, 0) + horasAsignadas;
+    
+    -- Revisión de que las horasTotales cumplan el límite asignado
+    IF horasTotales > horasMaximas THEN
+        -- Revertir a punto de guardado si excede las horas
+        ROLLBACK TO PreValidacion;
+        
+        -- Mensaje de error en caso de que la transacción falle.
+        SELECT 'Error: Las horas asignadas al proyecto no pueden superar las 100 unidades.' AS mensaje;
+        -- Se revierte la transacción completa para asegurarse de que no haya cambios.
+        ROLLBACK;
+    ELSE
+        -- Continúa la operación si la transacción es exitosa.
+        INSERT INTO AsignacionesDeProyectos (proyecto_id, empleado_id, horas_asignadas) 
+        VALUES (proyectoId, empleadoId, horasAsignadas);
+        
+        -- Confirmación de la transacción si las operaciones fueron exitosas.
+        COMMIT;
+    END IF;
+END //
+
+DELIMITER ;
