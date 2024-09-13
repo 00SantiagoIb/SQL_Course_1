@@ -1,0 +1,20 @@
+#  Las transacciones en bases de datos son un conjunto de operaciones SQL que se ejecutan como una unidad atómica. 
+#  Es decir, todas las operaciones dentro de la transacción deben completarse con éxito o, si ocurre algún error, ninguna de ellas debe aplicarse. 
+#  Las transacciones garantizan la integridad de los datos en situaciones donde varias consultas deben ejecutarse juntas de manera correcta.
+#  Características clave de las transacciones:
+
+#  Atomicidad (A - Atomicity): Toda la transacción se ejecuta completamente o no se ejecuta nada. 
+                               Si alguna parte falla, se revierte todo lo que se haya hecho (lo que se conoce como un "rollback").
+
+#  Consistencia (C - Consistency): Las transacciones aseguran que los datos pasen de un estado consistente a otro. 
+                                   Esto significa que, una vez completada la transacción, 
+                                   los datos deben cumplir todas las reglas de integridad definidas (por ejemplo, restricciones de clave foránea).
+
+#  Aislamiento (I - Isolation): Asegura que las transacciones concurrentes no interfieran entre sí. 
+                                Los resultados de una transacción no son visibles para otras transacciones hasta que la primera se complete.
+
+#  Durabilidad (D - Durability): Una vez que una transacción ha sido confirmada (commit), 
+                                 sus cambios se guardan de forma permanente, incluso en caso de fallos del sistema.
+
+#  Estas características son conocidas como ACID (por sus siglas en inglés: Atomicity, Consistency, Isolation, Durability), 
+   que definen el comportamiento de una transacción en una base de datos.
