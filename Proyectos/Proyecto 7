@@ -10,5 +10,42 @@
 # Reservas(reserva_id, cliente_id, etc)
 # Habitaciones(habitacion_id, tipo, etc)
 
+-- Creación de la base de datos
 
+CREATE DATABASE HotelDB;
+USE HotelDB;
+
+-- Creación de las tablas
+
+CREATE TABLE IF NOT EXISTS Clientes (
+	cliente_id INT AUTO_INCREMENT PRIMARY KEY,    # Declaración de la Primary key.
+    nombre VARCHAR(255) NOT NULL,
+    apellido VARCHAR(255) NOT NULL,
+    numero_contacto INT,
+    email VARCHAR(255) UNIQUE NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS Habitaciones (
+	habitacion_id INT AUTO_INCREMENT PRIMARY KEY,    # Declaración de la Primary key.
+    tipo VARCHAR(50) NOT NULL,
+    capacidad INT
+);
+
+CREATE TABLE IF NOT EXISTS Reservas (
+	reserva_id INT AUTO_INCREMENT PRIMARY KEY,    # Declaración de la Primary key.
+    fecha_reserva DATE,
+    ocupantes INT,
+    cliente_id INT,
+	FOREIGN KEY(cliente_id) REFERENCES Clientes(cliente_id),    # Declaración de la Foreign Key.
+	habitacion_id INT,
+	FOREIGN KEY(habitacion_id) REFERENCES Habitaciones(habitacion_id)    # Declaración de la Foreign Key.
+);
+
+CREATE TABLE IF NOT EXISTS Habitaciones (
+	habitacion_id INT AUTO_INCREMENT PRIMARY KEY,    # Declaración de la Primary key.
+    tipo VARCHAR(50) NOT NULL,
+    capacidad INT
+);
+
+-- Inserción de datos de prueba
 
