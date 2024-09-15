@@ -1,0 +1,23 @@
+#  Enunciado:
+
+#  Consulta SQL: Escribe una consulta SQL que seleccione el nombre y apellido de cada empleado, junto con el total de horas trabajadas y un ranking de empleados dentro de su departamento basado en las horas trabajadas.
+
+#  Funciones de Ventana: Utiliza la función de ventana RANK() para asignar un ranking a cada empleado en función de las horas trabajadas, agrupado por departamento.
+
+#  Orden de Resultados: Los resultados deben estar ordenados por departamento y por ranking.
+
+#  Recuerda utilizar los siguientes alias para el resultado final: Nombre, Apellido, Total Horas Trabajadas, Ranking Departamental
+
+SELECT 
+	E.nombre AS `Nombre`,
+	E.apellido AS `Apellido`,
+    SUM(A.horas_asignadas) AS `Total Horas Trabajadas`,
+    RANK() OVER (PARTITION BY E.depto_id ORDER BY SUM(A.horas_asignadas) DESC) AS `Ranking Departamental`
+ FROM 
+    Empleados E
+JOIN 
+    AsignacionesDeProyectos A ON E.empleado_id = A.empleado_id
+GROUP BY 
+    E.empleado_id, `Nombre`, `Apellido`, E.depto_id
+ORDER BY 
+	E.depto_id, `Ranking Departamental` DESC;
