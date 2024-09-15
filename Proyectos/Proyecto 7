@@ -9,3 +9,6 @@
 # Clientes(cliente_id, nombre, contacto)
 # Reservas(reserva_id, cliente_id, etc)
 # Habitaciones(habitacion_id, tipo, etc)
+
+
+
