@@ -1,0 +1,11 @@
+# Diseñar y desarrollar un sistema de base de datos para manejar las operaciones de reserva para un pequeño hotel.
+
+# Este sistema permitirá insertar, consultar y gestionar toda la información relacionada con reservas, clientes y habitaciones.
+
+# El objetivo es crear un sistema robusto que facilite la gestión eficiente de las reservas. Y que optimice la experiencia del cliente,
+# mejorando la operación del hotel.
+
+# Pista: Diseñar tablas de clientes, reservas y habitaciones.
+# Clientes(cliente_id, nombre, contacto)
+# Reservas(reserva_id, cliente_id, etc)
+# Habitaciones(habitacion_id, tipo, etc)
