@@ -49,3 +49,6 @@ CREATE TABLE IF NOT EXISTS Habitaciones (
 
 -- Inserción de datos de prueba
 
+INSERT INTO Clientes(nombre, apellido, numero_contacto, email) VALUES ('Santiago', 'Ibarra', 316344234, 'santiago.ibarra@email.com');
+
+INSERT INTO Habitaciones(tipo, capacidad) VALUES ('Suite', '2 personas');
