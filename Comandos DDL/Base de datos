@@ -1,5 +1,9 @@
 # Para crear una Base de Datos: 
 
+CREATE DATABASE nombre_de_la_base_de_datos;
+
+# Crear las tablas de la base de datos: 
+
 CREATE TABLE IF NOT EXISTS Departamentos (
 	departamento_id INT AUTO_INCREMENT PRIMARY KEY,    # Declaración de la Primary key.
   nombre VARCHAR(255) NOT NULL,
