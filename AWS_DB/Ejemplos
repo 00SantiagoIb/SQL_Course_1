@@ -1,0 +1,17 @@
+# Supongamos que queremos calcular el total de horas trabajadas por cada empleado en proyectos específicos,
+#  y luego obtener los detalles del empleado que ha trabajado más horas.
+
+WITH HorasEmpleado AS(
+	SELECT 
+		empleado_id,
+        SUM(horas_asignadas) AS HorasTotales
+	FROM AsignacionesDeProyectos
+    GROUP BY empleado_id
+)
+SELECT 
+	E.nombre AS `Nombre`,
+    E.apellido AS `Apellido`,
+    H.HorasTotales
+FROM Empleados E
+JOIN HorasEmpleado H ON E.empleado_id = H.empleado_id
+ORDER BY H.HorasTotales DESC
